@@ -98,5 +98,13 @@ Disk Operation System 的 command 用起来已经不习惯了，最近用的比�
   - Pycharm的安装
     - 不建议使用交互模式编写程序。
     - 不要安装于过长的文件目录深度。推荐 `D:\PyCharm` 这样的目录。
+    - File --> Settings --> Project : ProjectName --> Project Interpreter选择解释器，以及安装库。
+    - File --> Settings --> Appearance & Behavior --> Appearance， 修改外观。
+    - File --> Settings --> Appearance & Behavior --> System Settings --> Update设置自动更新。
+    - File --> Settings --> Editor --> General --> Auto Import 设置自动导包。
+    - File --> Settings --> Appearance & Behavior --> System Settings --> Reopen last project on Startup，设置是否自动打开上次关闭时的项目。  
+    - File --> Settings --> Editor --> File and Code Templates --> Python Script， 设置头部文件。
+    - File --> Settings --> Editor --> File Encodings, 将编码更改为UTF-8
     
-  
+    
+  ## 本日课程结束
