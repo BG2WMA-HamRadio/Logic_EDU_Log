@@ -29,8 +29,8 @@ Disk Operation System 的 command 用起来已经不习惯了，最近用的比�
     - 丰富的库。 标准库（自身携带），第三方库（比如`requests`），人生苦短，我用Python（Life is short, I use Python）。
       
   - Python的发展
-    - 应用普遍性比较高。
-    -
+    - 应用普遍性比较高，发展非常快。替Python吹牛并不是我的任务，下略......  
+    
   - Python的应用
     - 常规软件开发
     - 科学计算
@@ -57,4 +57,30 @@ Disk Operation System 的 command 用起来已经不习惯了，最近用的比�
     - 如果无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案评测标准）
     - 命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
   
-#### 搭建Python环境  
+#### 搭建Python环境 
+  - Python解释器的种类
+    - CPython （官方版本，使用C语言编写）
+    - PYPY （使用Python语言编写）
+    - JPython (使用Java编写）
+      
+  - Python的安装
+    - [官方网站](https://python.org/)
+    - 选择兼容性比较强的版本安装。比如3.6
+    - 下载跟自己操作系统位数兼容的版本。
+    - 安装的时候注意勾选add python目录到path。
+    - 注意勾选pip
+      
+  - Python中`pip`的使用
+    - 安装后使用 `python -m pip install --upgrade pip`命令升级pip  
+    - 使用 `pip install ipython` 命令安装iPython
+    - 使用 `pip install pandas` 命令安装pandas，快速便捷地处理结构化数据地大量数据结构和函数。
+    - 使用 `pip install matplotlib` 命令安装 matplotlib，最流行地用于绘制数据图表地Python库。
+    - 使用 `pip install scipy` 命令安装SciPy，一组专门解决科学计算中各种标准问题域的包的集合。
+    - 使用 `pip install epd` 命令安装EPD, Enthought Python Distribution，来自Enthought的面向科学计算的安装包，包括EPDFree。
+    - 使用 `pip install requests` 命令安装requests，获取网络资源比用的工具。
+    - 使用 `pip install bs4` 安装Beautiful Soup，最流行的爬虫工具。
+        
+  - Pycharm的安装
+    - 不建议使用交互模式编写程序。
+    
+  
