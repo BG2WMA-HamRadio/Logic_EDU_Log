@@ -78,8 +78,23 @@ Disk Operation System 的 command 用起来已经不习惯了，最近用的比�
     - 使用 `pip install scipy` 命令安装SciPy，一组专门解决科学计算中各种标准问题域的包的集合。
     - 使用 `pip install epd` 命令安装EPD, Enthought Python Distribution，来自Enthought的面向科学计算的安装包，包括EPDFree。
     - 使用 `pip install requests` 命令安装requests，获取网络资源比用的工具。
-    - 使用 `pip install bs4` 安装Beautiful Soup，最流行的爬虫工具。
-        
+    - 使用 `pip install bs4` 安装Beautiful Soup，最流行的爬虫工具。  
+      
+  - 使用`wheel`文件安装（并不推荐）
+    - 使用 `pip install wheel` 命令安装wheel。
+    - 到[pipwheel官网](https://pythonwheels.com/)下载所需的wheel文件。
+    - 使用 `pip install filename.whl` 命令安装相应库。  
+      
+  - 换源安装
+    - 某些时候，我们不得不对某些东西保持应有的，尊重的态度。
+    - 因为很多接口的原因，需要将安装源更换为国内源
+    [豆瓣](http://pypi.douban.com/simple/)  
+    [阿里云](http://mirrors.aliyun.com/pypi/simple/)  
+    [中科大](http://pypi.mirrors.ustc.edu.cn/simple)  
+    [清华](https://pypi.tuna.tsinghua.edu.cn/simple)
+      
+    - 例如：`pip install packagename -i http://pypi.douban.com/simple`  
+      
   - Pycharm的安装
     - 不建议使用交互模式编写程序。
     
