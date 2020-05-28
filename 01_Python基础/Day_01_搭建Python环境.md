@@ -82,12 +82,12 @@ Disk Operation System 的 command 用起来已经不习惯了，最近用的比�
       
   - 使用`wheel`文件安装（并不推荐）
     - 使用 `pip install wheel` 命令安装wheel。
-    - 到[pipwheel官网](https://pythonwheels.com/)下载所需的wheel文件。
+    - 到[PythonWheel官网](https://pythonwheels.com/)下载所需的wheel文件。
     - 使用 `pip install filename.whl` 命令安装相应库。  
       
   - 换源安装
-    - 某些时候，我们不得不对某些东西保持应有的，尊重的态度。
-    - 因为很多接口的原因，需要将安装源更换为国内源
+    - 某些时候，我们需要对某些东西保持应有的，尊重的态度。
+    - 因为很多接口的原因，需要将安装源更换为国内源  
     [豆瓣](http://pypi.douban.com/simple/)  
     [阿里云](http://mirrors.aliyun.com/pypi/simple/)  
     [中科大](http://pypi.mirrors.ustc.edu.cn/simple)  
