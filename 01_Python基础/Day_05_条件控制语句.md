@@ -190,3 +190,8 @@
           print(f'{i} * {j} = {i*j} ', end='')                # f'{}' 用来格式化变量的输出
      print()
    ```
+  
+### `continue` 和 `break`  
+  - `continue`用来退出**当次**循环。
+  - `break` 可以用来立即退出循环语句，包括`else`语句
+  
