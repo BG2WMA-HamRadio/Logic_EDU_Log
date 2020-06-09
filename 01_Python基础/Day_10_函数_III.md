@@ -5,18 +5,91 @@
   - 定义一个函数将列表中所有的偶数保存到新的列表。
   - 当使用一个函数作为参数是，就是将一段代码作为目标函数。
   ```
-  lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  lst = [n for n in range(1, 101)]                          #利用列表解析创建一个列表
+  # 找到可以被2整除的数
   def fn(lst):
       #创建一个新的列表
-      new_lest = []
+      new_list = []
       for i in lst:
-          if i % 2 == 0
-          new_list.append(i)
+          if i % 2 == 0:
+              new_list.append(i)
       return(new_list)
-  print(fn(lst))
+  
+  # 找到可以被3 整除的数
+  def fn1(lst):
+      # 创建一个新的列表
+      new_list = list()
+      for i in lst:
+          if i % 3 == 0
+              new_list.append(i)
+      return(new_list)
+      
+  # 找到大于50的数
+  def fn2(lst):
+      new_list = list()                                     # 也可以用 new_list = []
+      for i in lst:
+          if i > 5:
+              new_list.append(i)
+      return new_list
+             
   ```
-    
-
+  - 如果需要完成多个类似功能，则需要定义多个函数。
+  ```
+  a = [n for n in range(1, 101)]
+  def fn(lst):
+      # 在函数内部定义完成功能的函数：
+      def fn1(i):
+          if i % 2 == 0
+              return True
+          return False
+      .
+      .
+      .
+      def fnx(i)
+          if i > 5:
+              return True
+          return False
+          
+      new_lst = []
+      for n in lst:
+          if fnx:                                #这里的x用1......x代替
+              new_list.append(n)
+      return new_list                             # 列表作为函数的返回值
+      
+  print(fn(a))                                    # 调用（执行）函数
+  ```
+  - 为达到更加便利的使用和维护的目的，将函数做如下修改：
+  ```
+  a = [n for n in range(1, 101)]
+  # 将内部函数移到主函数外边：
+  def fn1(i):
+      if i % 2 == 0
+          return True
+      return False
+  .
+  .
+  .
+  def fnx(i)
+      if i > 5:
+          return True
+      return False
+  def fn(func, list):
+      new_list = []
+      for n in lst:
+          if func(n):
+              new_list.append(n)
+      return new_list               # 将列表作为返回值
+  
+  print(fn(fn1, a))
+  print(fn(fn2, a))
+  .
+  .
+  .
+  print(fn(fnx, a))
+  ```
+  - 将函数`fnx()`作为参数传递给函数，是高阶函数的一种。
+  - 实际上是将一段代码作为参数传递给函数。  
+  
 #### 匿名函数
   - `filter()`可以从序列中过滤出符合条件的元素，并保存到一个新的序列中。
   - 参数一，函数，根据该函数来过滤序列
