@@ -122,9 +122,67 @@
     
 #### 闭包
   - 高阶函数的另一种形式，将函数作为返回值返回，那么这种形式称之为闭包。
+  ```
+  def fn():
+      # 函数内部定义了一个函数：
+      def fn1():
+          print('我是fn1...')
+      # 将内部函数fn1作为返回值返回
+      return fn1
+
+  print(fn())                     # 返回函数对象:<function fn.<locals>.fn1 at 0x000001F5C8D43F70>
+  r = fn()
+  r()                             # 调用内部函数fn1: 我是fn1...
+  ```
   - 可以访问函数内部的参数。
+  ```
+  def fn():
+      a = 123
+
+      # 函数内部定义了一个函数：
+      def fn1():
+          print('我是fn1...', a)
+      # 将内部函数fn1作为返回值返回
+      return fn1
+
+  print(fn())                     # 返回函数对象:<function fn.<locals>.fn1 at 0x000001F5C8D43F70>
+  r = fn()
+  r()                             # 调用内部函数fn1: 我是fn1... 123
+  ```
   - 可以通过闭包可以创建一些只有当前函数才能访问的变量
+  ```
+  nums = [i for i in range(1, 100)]
+
+  print(sum(nums) / len(nums))
+  ```
+  使用函数的方式求平均值：
+  ```
+  nums = list()
+
+  def average(n):
+      # n 添加到列表中
+      nums.extend(n)                                # extend()将一个列表添加到另外一个列表后边。
+      return sum(nums) / len(nums)
+
+  print(average([10, 20]))
+  ```
   - 可以将一些私有的数据隐藏在闭包中。
+    - 上边的函数用闭包的方法编写如下：
+  ```
+  def make_average():                               # 没有形参
+      nums = list()                                 # 函数内部的nums变量在函数外部无法访问。
+      def average(n):
+          nums.append(n)
+
+          return sum(nums) / len(nums)
+      return average
+  average = make_average()
+
+  print(average(10))                                # 10
+  nums = []                                         # 此处的nums不能覆盖函数内部的列表
+  print(average(80))                                # 45
+  ```
+  
   - 形成闭包的条件：
     - 1. 函数嵌套
     - 2. 将内部函数作为返回值返回
@@ -133,13 +191,94 @@
 
 #### 装饰器的引入
   - 可以修改函数中的代码完成这个需求，但是会产生问题
+  ```
+  def add(a, b):
+      print('函数开始执行。。。。')
+      result = a + b
+      print('函数执行结束。。。')
+      return result
+  def mul(a, b):
+      print('函数开始执行。。。。')
+      return a * b
+      print('函数开始执行。。。。')
+  print(add(1, 2))
+  ```
+  - 上述代码存在如下问题：
     - 如果要修改的函数过多，修改起来会比较繁琐。
     - 不方便后期维护。
     - 违反开闭原则（OCP），程序的设计要求开发对程序的扩展，要求关闭对程序的修改。
   - 可以定义一个新函数对原函数扩展。
+  ```
+  def fn():
+      print('我是fn()。。。')
+ 
+  def fn2():
+      print('函数开始执行。。。')
+      fn()
+      print('函数执行结束。。。')
+ 
+  fn2()                                # 在没有修改fn的情况下对原函数进行了扩展
+  ```
+  - 另外一个例子：
+  ```
+  def add(a, b):
+      return a + b
+
+  def new_add(a, b):
+      print('开始计算')
+      result = add(a, b)
+      print('计算结束')
+      return result
+
+  r = new_add(4, 5)
+  print(r)
+  ```
 
 #### 装饰器的使用
   - 通过装饰器，可以在不修改原来函数的情况下来对函数进行扩展。
+  ```
+  def fn():
+       print('我是fn()。。。')
+
+  def add(a, b):
+      return a + b
+
+
+  def start_end(old):                                 # 用函数实参传递给形参old
+      # 用来对其他函数进行扩展
+      # 在函数开始执行之前打印：开始执行
+      # 在函数执行结束后打印：执行结束
+      def new_func(*args, **kwargs):
+          print('开始执行')
+          result = old(*args, **kwargs)                              # 调用被扩展的函数
+          print('执行结束')
+          return result
+      return new_func
+
+  f = start_end(add)(2, 4)
+
+  print(f)
+
+
+  r = start_end(add)                                     # 首先返回new_func
+  r = r(2, 4)                                            # 然后返回result
+  print(r)
+
+  r = start_end(fn)
+  r = r()
+  # print(r)                          # TB: TypeError: new_func() missing 2 required positional arguments: 'a' and 'b'
+  ```
+  - 将内部函数的形参修改为`*args, **kwargs`，以后，内部参数可以接收所有参数。函数可以正确执行。
+  -  例如类似`start_end()`这一类的函数，我们就称之为装饰器。
+  -  通过装饰器可以在不修改原来函数的情况下，来对函数进行扩展
+  - 在开发中我们都是通过装饰器来扩展函数的功能。
+
   - 在开发中，我们都是通过装饰器来扩展函数的功能。
   - 用`@装饰器` 可以直接调用装饰器。不带括号
-  
+  ```
+  @start_end                         # 在函数之前添加一个@装饰器，就可以使装饰器应用于紧跟着的函数。
+  def speak():
+      print('同学们')
+
+  speak()
+  ```  
