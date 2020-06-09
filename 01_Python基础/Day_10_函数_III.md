@@ -97,11 +97,28 @@
   - 返回值：过滤后的序列。
   
   ```
-  
+  a = [n for n in range(1, 101)]
+
+  def fn(i):
+    
+      if i % 3 == 0:
+          return True
+      return False
+
+  new_lst = list(filter(fn, a))                         # filter()函数就相当于上节的以函数作为参数的高阶函数。 
+  print(new_lst)
   ```
   - 匿名函数就是lambda表达式。
     - lambda函数表达式专门创建一些简单的函数，他是函数的另一种创建方式
     - 语法：lambda 参数列表：返回值
+  ```
+  def fn5(a, b):
+    return a + b
+
+  k = lambda a, b: a + b
+  print(fn5(1, 2))
+  print(k(1,2))                                        # 匿名参数的使用方便，所得到的结果与fn()一致
+  ```
     
 #### 闭包
   - 高阶函数的另一种形式，将函数作为返回值返回，那么这种形式称之为闭包。
