@@ -87,14 +87,37 @@
   - 当我们调用一个对象的属性，解析器先在**当前实例**中查找。
   - 如果有，则直接返回当前对象的属性值。
   - 如果当前实例中没有，则去当前对象的类对象中去寻找，如果有返回类中的属性值，没有则报错
-  - 类对象和实例对象都可以保存属性和方法。
+  - 类对象和实例对象都可以保存**属性**和**方法**。
   - 如果属性和方法是所有实例共享的，则应该保存到类对象中
   - 如果属性或者方法是某个实例独有的，则应该保存到实例对象中。
     - 一般情况，属性保存在实例对象当中
     - 方法通常保存到类对象中。
+  ```
+  class Person():
+      def __init__(self, full_name, high, country, address):
+          # 通过 __init__ 方法创建类的属性
+          self.full_name = full_name.title()
+          self.high = high
+          self.country = country.title()
+          self.address = address.title()
+
+      # 创建一个说话的方法：
+      def speak(self):
+          print(self.full_name, 'now speaking...')
+      # 创建一个对人的描述的方法：
+      def des(self):
+          print('Name: ', self.full_name)
+          print("High: ", self.high)
+          print('Country: ', self.country)
+          print('Address: ', self.address)
+
+  m = Person(full_name='wang tian gang', high='178cm', country='china', address='shenyang')
+  m.speak()
+  m.des()
+  ```
     
 #### 4.参数self
-  - 和函数不同，类的内部不能访问外部的变量。
+  - 和函数不同，**类的内部不能访问外部的变量**。
   - 在类中定义方法，会默认传递一个参数，通过现象我们发现，默认参数就是调用的实例对象。
   - 一般我们都会称这个参数为self, 规范。
   
