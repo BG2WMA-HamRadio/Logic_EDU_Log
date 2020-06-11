@@ -33,13 +33,27 @@
     
     
   - 使用class关键字来定义类，类的名称规定首字母大写：`class 首字母大写的类名([父类])`
-  
-  - `isinstance(o, t)`用来检查一个对象是否使一个类的实例。参数o为实例，t为创建实例的类
-  
-  
-
-  - 类也是一个对象。是用来创造对象的对象。
-  - 类是`type`类型的对象，定义类实际上就是定义了一个`typy`类型的对象
+  ```
+  class MyClass():
+      pass
+  print(MyClass)            #显示该对象的类型为class
+    
+  mc = MyClass()            # mc是通过MyClass创建的一个实例。
+  print(mc, type(mc))       # mc的类型为MyClass类
+  ```  
+  - `isinstance(o, t)`用来检查一个对象是否是一个类的实例。参数o为实例，t为创建实例的类
+  ```
+  result = isinstance(mc, MyClass)
+  print(result)              # True，说明mc是由MyClass创建的实例
+  ```
+#### 类的说明
+  - 类也是一个对象。是用来**创建对象**的对象。
+  - 类是`type`类型的对象，定义类实际上就是定义了一个`typy`类型的**对象**
+  ```
+  class MyClass():
+      pass
+  print(id(MyClass), type(MyClass))    # 前边显示的是MyClass的内存地址，后边显示<class 'type'>
+  ```
   - 可以向对象中添加变量，对象添加变量我们也称之为属性
   - 语法：对象.属性名 = 属性值
 #### 3.类的定义 
