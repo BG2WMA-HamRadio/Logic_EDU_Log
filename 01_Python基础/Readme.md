@@ -8,7 +8,7 @@
 def fn():
     def fn2():
         print('python'.title())
-    return fn2()      # 这种方式相当于直接调用（运行）了`fn2()`这个函数，并不会返回fn2()的结果。
+    return fn2()      # 这种方式相当于直接调用（运行）了‘fn2()’这个函数，并不会返回fn2()的结果。
 
 r = fn()
 print(r)              # 这里显示’None‘，说明r的结果是空值，也就是说，return语句没有实质上给r赋值。
