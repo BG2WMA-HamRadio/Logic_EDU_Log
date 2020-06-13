@@ -111,7 +111,7 @@
       need_grand = True
       public_name = 'radio'
       # 初始化实例私有属性：
-      def __init__(self, model, brand, public_name= ublic_name):   # 这里public_name通过公共属性赋予
+      def __init__(self, model, brand, public_name= public_name):   # 这里public_name通过公共属性赋予
           self.public_name = public_name.upper()
           self.model = model.upper()
           self.brand = brand.upper()
@@ -134,7 +134,7 @@
 #### 封装
   - 封装是面向对象的三大特性之一
   - 封装就是指隐藏对象中的一些不希望被外部访问到的属性或方法。
-  - 实现的方法：将对象的属性名 修改为一个 外部不知道的名字  
+  - 实现的方法：将对象的属性名 修改为一个外部不知道的名字  
   ```
   class Radio():
       # 公共属性：
@@ -156,7 +156,7 @@
   ```
   - 这是一种比较弱的封装方式，通常是用来提示其他编程者不要对相应属性进行修改。
     
-  - 如果需要修改属性，我们要提供一个getter和setter方法，使外部可以访问到属性并修改。
+  - 如果需要修改属性，我们要提供一个getter()和setter()方法，使外部可以访问到属性并修改。
   - getter(self)方法，用来获取对象的属性值
   - seeter(self, name)方法用来修改对象的属性值  
   ```
@@ -286,7 +286,7 @@
     my = Ham('bg2wma')
     my.cq()
     ```
-    - 使用`my.cq()`的方式不符合使用习惯，这是可以通过添加@property的装饰器，将`.cq()`方法转换为`.cq`属性
+    - 使用`my.cq()`的方式不符合使用习惯，这时可以通过添加@property的装饰器，将`.cq()`方法转换为`.cq`**只读属性**
     ```
     class Ham:
         def __init__(self, call_sign):
