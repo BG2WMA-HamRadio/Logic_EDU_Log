@@ -88,26 +88,44 @@
     
   - 类的基本结构
   ```
-  class 类名[父类]:
+  class 类名([父类]):
       公共属性...
       # 对象的初始化方法
       def __init__(self, ...)
           pass
-      def meth1(self):
+      # 其他的方法
+      def method_1(self):
           pass
-      def meth1(self):
+      def method_2(self):
           pass
+      ...
   ```
 
 #### 封装的引入
-  - 尝试定义一个车类
+  - 尝试定义一个电台类
   ```
-  属性：name, color...
-  方法：run(), laba()
-  
-  class
+  class Radio():
+      # 公共属性：
+      is_speaker = True
+      need_antenna = True
+      need_grand = True
+      public_name = 'RADIO'
+      def __init__(self, model, brand):
+          self.public_name = 'RADIO'
+          self.model = model.upper()
+          self.brand = brand.upper()
+
+      def power_on(self):
+          print(self.public_name, self.model, 'Now Power ON.')
+
+  y_991 = Radio('ft-991a', 'yaesu')
+  y_991.power_on()        # RADIO FT-991A Now Power ON.
   ```
-  - 需要一种方式来增强数据的安全性。
+  - 这种方法出现的问题：
+    - 首先，公共属性中的`public_name =`的值 `'RADIO'`可以通过`y_991a.public_name = ''`这种方式随意修改
+    - 公共属性中的所有属性值都可以改成任意值，甚至是不合法的值。
+    
+  - 所以需要一种方式来增强数据的安全性。
     - 属性不能随意修改。
     - 属性不能改为任意值。
 
