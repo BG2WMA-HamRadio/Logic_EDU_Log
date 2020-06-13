@@ -1,6 +1,25 @@
 ### 面向对象 II
 #### 特殊方法
   - 手动添加属性容易遗忘，创建实例时，希望能够自动添加必需的属性。
+  ```
+  class Ham:
+      call_sign = 'bg2wma'
+       def cq(self):
+
+          print('Hello CQ, CQ, CQ, This is %s'%self.call_sign.upper())
+
+
+  my = Ham()
+  my.cq()         # Hello CQ, CQ, CQ, This is BG2WMA             
+
+  you = Ham()
+  you.cq()        # Hello CQ, CQ, CQ, This is BG2WMA, 与上边的实例显示了相同的call_sign，这不是我们希望看到的。
+  ```
+    - 此时如果将类代码中的`call_sign = 'bg2wma'`注释掉，则显示TB错误`call_sign`没有提供`cq`方法的实参。
+    - 可以手动通过`my.call_sign = 'bg2wma'`的方式为当前实例添加属性。
+    - 在此之后，如果又增加了一个`other = ham()`，而没有添加`other.call_sign=`为实例添加属性，则依然会TB错误。
+    
+
   - 在类中，可以定义一些特殊方法。
   - 特殊方法形如 `__方法__`
   - 特殊方法不需要我们自己调用  
