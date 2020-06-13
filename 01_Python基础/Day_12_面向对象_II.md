@@ -22,10 +22,10 @@
     - 通过观察，我们发现，类`Ham()`中，`call_sign`属性是必须存在的，并且针对独立实例来讲，`call_sign`又是不同的。
     
   - 为了解决特殊问题，Python在类中可以定义一些特殊方法。
-  - 特殊方法形如 `__方法__`
-  - 特殊方法不需要我们自己调用  
-  - 特殊方法是在特殊的时刻调用
-  - 特殊方法之`__init__`：
+  - 特殊方法形如 `__方法名__()`
+    - 特殊方法不需要我们自己调用  
+    - 特殊方法是在特殊的时刻调用
+  - 特殊方法之`__init__()`：
   ```
   class Ham:
       def __init__(self):
@@ -35,11 +35,42 @@
           print('Hello CQ, CQ, CQ, This is %s' %self.call_sign.upper())
 
   my = Ham()                  # hello
-  my.__init__()               # hello， 说明__init__方法不经调用即可执行
+  my.__init__()               # hello， 说明__init__()方法不经调用即可执行
   ```
-  
+  - `__init__()`方法在生成实例的时候即产生调用。每生成一个实例就调用一次。
+  ```
+  class Ham:
+      def __init__(self):
+          print('hello')
+      def cq(self):
+
+          print('Hello CQ, CQ, CQ, This is %s' %self.call_sign.upper())
+
+  my = Ham()                  # hello
+  you = Ham()                 # hello
+  other = Ham()               # hello 只要生成一个实例，__init__()方法就会调用一次
+  ```
   - `__init__(self, 属性1, 属性2...属性n)` 创建实例的时候自动调用。
-  - 先执行类中的代码，后执行`__init__`中的代码块。
+  - 先执行类中的代码块**并且只执行一次**，后执行`__init__`中的代码块。
+  ```
+  class Ham:
+      def __init__(self):
+          print('hello')
+      print('现在执行类中的代码...')
+      def cq(self):
+          print('Hello CQ, CQ, CQ, This is %s' %self.call_sign.upper())
+
+  my = Ham()
+  you = Ham()
+  other = Ham()
+  # 结果如下
+  # 现在执行类中的代码...
+  # hello
+  # hello
+  # hello
+  # 说明Python先执行了类中的代码，并且只执行一次，然后才执行__init__()方法。
+  ```
+    
   - 类的基本结构
   ```
   class 类名[父类]:
