@@ -109,9 +109,9 @@
       is_speaker = True
       need_antenna = True
       need_grand = True
-      public_name = 'RADIO'
-      def __init__(self, model, brand):
-          self.public_name = 'RADIO'
+      public_name = 'radio'
+      def __init__(self, model, brand, public_name = public_name):
+          self.public_name = public_name.upper()
           self.model = model.upper()
           self.brand = brand.upper()
 
@@ -126,14 +126,33 @@
     - 公共属性中的所有属性值都可以改成任意值，甚至是不合法的值。
     
   - 所以需要一种方式来增强数据的安全性。
-    - 属性不能随意修改。
-    - 属性不能改为任意值。
+    - 属性不能**随意修改**。
+    - 属性不能改为**任意值**。
 
 
 #### 封装
   - 封装是面向对象的三大特性之一
-  - 封装就是指隐藏队形汇总的一些不希望被外部访问到的属性或方法。
-  - 将对象的属性名 修改为一个 外部不知道的名字  
+  - 封装就是指隐藏对象中的一些不希望被外部访问到的属性或方法。
+  - 实现的方法：将对象的属性名 修改为一个 外部不知道的名字  
+  ```
+  class Radio():
+      # 公共属性：
+      is_speaker = True
+      need_antenna = True
+      need_grand = True
+      public_name = 'radio'
+      def __init__(self, model, brand, public_name = public_name):
+          self.hiden_public_name = public_name    # 通过修改，实现隐藏该属性的目的。
+          self.model = model.upper()
+          self.brand = brand.upper()
+
+      def power_on(self):
+          print(self.public_name, self.model, 'Now Power ON.')
+
+  y_991 = Radio('ft-991a', 'yaesu')
+  y_991.public_name = 'green'
+  y_991.power_on()        # RADIO FT-991A Now Power ON.
+  ```
   - 如果需要修改属性，我们要提供一个getter和setter方法，使外部可以访问到属性并修改。
   - getter(self)方法，用来获取对象的属性值
   - seeter(self, name)方法用来修改对象的属性值
