@@ -142,24 +142,87 @@
       need_grand = True
       public_name = 'radio'
       def __init__(self, model, brand, public_name = public_name):
-          self.hiden_public_name = public_name    # 通过修改，实现隐藏该属性的目的。
+          self.hidden_public_name = public_name    # 通过修改，实现隐藏该属性的目的。
           self.model = model.upper()
           self.brand = brand.upper()
 
       def power_on(self):
-          print(self.public_name, self.model, 'Now Power ON.')
+          print(self.hidden_public_name, self.model, 'Now Power ON.') # 在方法中调用隐藏的属性名，用以防止无意的修改。
 
   y_991 = Radio('ft-991a', 'yaesu')
   y_991.public_name = 'green'
   y_991.power_on()        # RADIO FT-991A Now Power ON.
   ```
+  - 这是一种比较弱的封装方式，通常是用来提示其他编程者不要对相应属性进行修改。
+    
   - 如果需要修改属性，我们要提供一个getter和setter方法，使外部可以访问到属性并修改。
   - getter(self)方法，用来获取对象的属性值
-  - seeter(self, name)方法用来修改对象的属性值
+  - seeter(self, name)方法用来修改对象的属性值  
+  ```
+  class Radio():
+      # 公共属性：
+      is_speaker = True
+      need_antenna = True
+      need_grand = True
+      public_name = 'radio'
+      def __init__(self, model, brand, public_name = public_name):
+          self.hidden_public_name = public_name    # 通过修改，实现隐藏该属性的目的。
+          self.model = model.upper()
+          self.brand = brand.upper()
+      # 这个方法用来获取实例对象的public_name属性值。
+      def get_public_name(self):
+          return self.hidden_public_name
+      # 这个方法用来修改实例对象的public_name属性值。
+      def set_public_name(self, new_public_name):
+          self.hidden_public_name = new_public_name
+
+      def power_on(self):
+          print(self.hidden_public_name, self.model, 'Now Power ON.') # 在方法中调用隐藏的属性名，用以防止无意的修改。
+      def 
+  y_991 = Radio('ft-991a', 'yaesu')
+  print(y_991.get_public_name())    RADIO
+  y_991.set_public_name('HF RADIO')
+  y_991.power_on()        # HF RADIO FT-991A Now Power ON. 实例y_991的public_name被修改成‘HF RADIO’
+  ```
+  
   - 使用封装，确实增加了类的定义的复杂程度，但是它也确保了数据的安全
     - 隐藏属性名，使调用者无法随意的修改对象中的属性
-    - 增加了getter和setter方法，很好的控制属性是否是只读的。
-    - 使用setter设置属性，可以增加数据的验证，确保数据是正确的
+    - 增加了getter()和setter()方法，很好的控制属性是否是只读的。
+    - 使用setter()方法设置属性，可以增加数据的验证，确保数据是正确的
+    ```
+    class Radio():
+        # 公共属性：
+        is_speaker = True
+        need_antenna = True
+        need_grand = True
+        public_name = 'radio'
+        def __init__(self, model, brand, power, public_name = public_name):
+            self.__public_name = public_name.upper()
+            self.__power = power
+            self.model = model.upper()
+            self.brand = brand.upper()
+        # 这个方法用来获取实例对象的public_name属性值。
+        def get_public_name(self):
+            return self.__public_name
+        # 这个方法用来修改实例对象的public_name属性值。
+        def set_public_name(self, public_name):
+            self.__public_name = public_name
+
+        def get_power(self):
+            return self.__power
+
+        def set_power(self, power):
+            if power > 0:          # 增加了属性验证
+                self.__power = power
+        def power_on(self):
+            print(self.__public_name, self.model, 'Now Power ON.', self.__power, 'Watt')
+
+    y_991 = Radio('ft-991a', 'yaesu', 50)
+    # print(y_991.get_public_name())
+    # y_991.set_public_name('HF RADIO')
+    y_991.set_power(-30)                     如果此时无意中输入了错误的值-30，则程序忽略该输入。
+    y_991.power_on()
+    ```
     - 使用getter()方法获取属性，使用setter（）方法修改属性的同时做一些逻辑操作。
     
   - 可以为对象的属性使用双下划线的方式来封装`__属性`来防止修改，而只能使用setter()方法进行修改。
@@ -168,6 +231,45 @@
   - 这个名字叫`_类名__属性名`,使用这个名字可以依旧可以获取及修改。
   - 使用双下划线的属性，实际上依然可以在外部访问的，所以这种方式一般不用
   - 一般对属性进行封装都是使用`_属性`这种方式进行。
+  ```
+  class Radio():
+      # 公共属性：
+      is_speaker = True
+      need_antenna = True
+      need_grand = True
+      public_name = 'radio'
+
+      def __init__(self, model, brand, power, public_name=public_name):
+          self._public_name = public_name.upper()
+          self._power = power
+          self.model = model.upper()
+          self.brand = brand.upper()
+
+      # 使用标准语法隐藏属性：'_attr'，单下划线。
+      def public_name(self):
+          return self._public_name
+
+      # 这个方法用来修改实例对象的public_name属性值。
+      def public_name(self, public_name):
+          self._public_name = public_name
+
+      def power(self):
+          return self._power
+
+      def power(self, power):
+          if power > 0:                   
+              self._power = power
+
+      def power_on(self):
+          print(self._public_name, self.model, 'Now Power ON.', self._power, 'Watt')
+
+
+  y_991 = Radio('ft-991a', 'yaesu', 50)
+  # print(y_991.get_public_name())
+  # y_991.set_public_name('HF RADIO')
+  y_991.power(30)
+  y_991.power_on()
+    ```
   
 #### @property装饰器
   - 使用@property装饰器，来创建的只读属性，这个装饰器会将方法转换为同名的只读属性。
