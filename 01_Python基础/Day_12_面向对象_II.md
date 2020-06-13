@@ -110,7 +110,8 @@
       need_antenna = True
       need_grand = True
       public_name = 'radio'
-      def __init__(self, model, brand, public_name = public_name):
+      # 初始化实例私有属性：
+      def __init__(self, model, brand, public_name= ublic_name):   # 这里public_name通过公共属性赋予
           self.public_name = public_name.upper()
           self.model = model.upper()
           self.brand = brand.upper()
@@ -272,3 +273,31 @@
   
 #### @property装饰器
   - 使用@property装饰器，来创建的只读属性，这个装饰器会将方法转换为同名的只读属性。
+    ```
+    class Ham:
+        def __init__(self, call_sign):
+            self._call_sign = call_sign
+
+
+        def cq(self):
+            print('Hello CQ, CQ, CQ, This is %s' % self._call_sign.upper())
+
+
+    my = Ham('bg2wma')
+    my.cq()
+    ```
+    - 使用`my.cq()`的方式不符合使用习惯，这是可以通过添加@property的装饰器，将`.cq()`方法转换为`.cq`属性
+    ```
+    class Ham:
+        def __init__(self, call_sign):
+            self._call_sign = call_sign
+
+        @property
+        def cq(self):
+            print('Hello CQ, CQ, CQ, This is %s' % self._call_sign.upper())
+
+
+    my = Ham('bg2wma')
+    my.cq             # Hello CQ, CQ, CQ, This is BG2WMA，达到了预期目的
+    ```
+  
