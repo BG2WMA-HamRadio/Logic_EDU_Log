@@ -263,13 +263,12 @@
       def power_on(self):
           print(self._public_name, self.model, 'Now Power ON.', self._power, 'Watt')
 
-
-    y_991 = Radio('ft-991a', 'yaesu', 50)
-    # print(y_991.get_public_name())
-    # y_991.set_public_name('HF RADIO')
-    y_991.power(30)
-    y_991.power_on()
-    ```
+  y_991 = Radio('ft-991a', 'yaesu', 50)
+  # print(y_991.get_public_name())
+  # y_991.set_public_name('HF RADIO')
+  y_991.power(30)
+  y_991.power_on()
+  ```
   
 #### @property装饰器
   - 使用@property装饰器，来创建的只读属性，这个装饰器会将方法转换为同名的只读属性。
