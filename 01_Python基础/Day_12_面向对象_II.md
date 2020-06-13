@@ -14,16 +14,30 @@
 
   you = Ham()
   you.cq()        # Hello CQ, CQ, CQ, This is BG2WMA, 与上边的实例显示了相同的call_sign，这不是我们希望看到的。
-  ```
+  ```  
+  - 上边代码中的问题：
     - 此时如果将类代码中的`call_sign = 'bg2wma'`注释掉，则显示TB错误`call_sign`没有提供`cq`方法的实参。
     - 可以手动通过`my.call_sign = 'bg2wma'`的方式为当前实例添加属性。
     - 在此之后，如果又增加了一个`other = ham()`，而没有添加`other.call_sign=`为实例添加属性，则依然会TB错误。
+    - 通过观察，我们发现，类`Ham()`中，`call_sign`属性是必须存在的，并且针对独立实例来讲，`call_sign`又是不同的。
     
-
-  - 在类中，可以定义一些特殊方法。
+  - 为了解决特殊问题，Python在类中可以定义一些特殊方法。
   - 特殊方法形如 `__方法__`
   - 特殊方法不需要我们自己调用  
   - 特殊方法是在特殊的时刻调用
+  - 特殊方法之`__init__`：
+  ```
+  class Ham:
+      def __init__(self):
+          print('hello')
+      def cq(self):
+
+          print('Hello CQ, CQ, CQ, This is %s' %self.call_sign.upper())
+
+  my = Ham()                  # hello
+  my.__init__()               # hello， 说明__init__方法不经调用即可执行
+  ```
+  
   - `__init__(self, 属性1, 属性2...属性n)` 创建实例的时候自动调用。
   - 先执行类中的代码，后执行`__init__`中的代码块。
   - 类的基本结构
