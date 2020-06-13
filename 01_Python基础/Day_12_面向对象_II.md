@@ -70,6 +70,21 @@
   # hello
   # 说明Python先执行了类中的代码，并且只执行一次，然后才执行__init__()方法。
   ```
+  - `__init__()`方法的作用：
+  ```
+  class Ham:
+      def __init__(self, call_sign):
+          self.call_sign = call_sign.upper()
+      def cq(self):
+          print('Hello CQ, CQ, CQ, This is %s' %self.call_sign)
+
+  my = Ham('bg2wma')
+  my.cq()              # Hello CQ, CQ, CQ, This is BG2WMA
+  # 此时如果添加下列实例：
+  # you = ham()          # 没有为实例添加属性，运行时出现TB错误：没有向`__init__()`方法提供实参'call_sign'
+  you = ham('bh2sjs')
+  you.cq()             #  Hello CQ, CQ, CQ, This is BH2SJS，显示了与my.cq()不同的结果，达到预期目的。
+  ```
     
   - 类的基本结构
   ```
