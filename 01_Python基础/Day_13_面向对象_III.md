@@ -191,13 +191,63 @@ r = C.__bases__     # 注意区分实例和类，这里是获取类的属性，�
 print(r)            # (<class '__main__.A'>, <class '__main__.B'>)，返回一个元组，列出当前类的所有父类（不包括object）
 ```
 - Python是支持多继承的，我们可以为一个子类指定多个父类。
+- 如果多个父类中出现同名的方法，则会先在第一个父类中寻找，然后再到第二个父类中寻找，以此类推。
+- 逻辑关系比较复杂的时候，这种继承方法会产生混乱和错误。
 - 如无特殊需要，不要使用多重继承。
 
 
 #### 多态
 - 多态是面向对象的三大特性之一。
-- 对象，也可以有不同的形态去呈现。
-- len()函数的用法，就是多态类型的一种体验
+- 在Python中， 一个对象，也可以有不同的形态去呈现。
+```
+class A(object):
+
+    def __init__(self, name):
+        self._name = name
+
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        if len(name) > 0:
+            self._name = name
+
+
+class B(object):
+
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        if len(name) > 0:
+            self._name = name
+
+wma = A('BG2WMA')
+sjs = B('BH2SJS')
+
+def cq(ham):
+    print('%s Now Calling CQ...'%ham.name)
+
+cq(wma)       # BG2WMA Now Calling CQ...
+cq(sjs)       # BH2SJS Now Calling CQ...
+
+# 这里，cq这个函数，可以同时对wma，sjs两个参数进行操作，我们称这种现象就是多态
+```
+- 只要实例中有`name`这个属性，`cq()`函数就可以对实例进行操作。这种形式或者说现象，就是多态。
+- `len()`函数的用法，就是多态类型的一种体验。
+  - 支持`len()`函数操作的对象的源码中，都会包含一个`__len__()`这个特殊方法。
+  - 也就是说，多态，也是我们在程序中定义的。
+  - 不用多态的好出是，代码的`健壮性`更好，但是`通用性`较差。
+  
+  - 计算机科学中，健壮性，鲁棒性，稳健性（英语：Robustness）是指一个计算机系统在执行过程中处理错误，以及算法在遭遇输入、运算等异常时继续正常运行的能力。 诸如模糊测试之类的形式化方法中，必须通过制造错误的或不可预期的输入来验证程序的稳健性。很多商业产品都可用来测试软件系统的稳健性。稳健性也是失效评定分析中的一个方面。
 
 
 #### 属性和方法
