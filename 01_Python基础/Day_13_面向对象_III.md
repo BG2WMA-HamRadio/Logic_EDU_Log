@@ -167,7 +167,29 @@ print(d.sex)                  # 调用子类的方法
 - `super`代表当前类的父类。
 
 #### 多重继承
-- `类名.__bases__`：这个方法可以获取当前类的所有父类。
+```
+# 一个多重继承的例子
+class A(object):
+    def test1(self):
+        print('A...')
+
+class B(object):
+    def test2(self):
+        print('B...')
+
+
+class C(A, B):     # C 先继承A，再继承B
+    pass
+
+c = C()
+c.test1()
+c.test2()
+```
+- `类名.__bases__`：这个属性可以获取当前类的所有父类。
+```
+r = C.__bases__     # 注意区分实例和类，这里是获取类的属性，并非获取实例的属性。
+print(r)            # (<class '__main__.A'>, <class '__main__.B'>)，返回一个元组，列出当前类的所有父类（不包括object）
+```
 - Python是支持多继承的，我们可以为一个子类指定多个父类。
 - 如无特殊需要，不要使用多重继承。
 
