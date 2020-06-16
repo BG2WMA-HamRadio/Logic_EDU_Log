@@ -132,11 +132,13 @@ class Animal(object):
 
 class Dog(Animal):
 
-    # 子类初始化属性的时候，会覆盖父类中的属性，所以需要将父类中的属性重新定义进来。
-    # 子类属性初始化的时候，需要继承父类的哪些属性，就要初始化哪些属性，如果没有初始化，则不能调用
+    # 初始化子类属性，相当于重写了父类的初始化属性（__init__()）。
+    # 需要继承父类的哪些属性，就要初始化哪些属性，如果没有初始化，则不能调用
     def __init__(self, name, age, sex):            
         self._sex = sex
-        # Animal.__init__(self, name, age)           # 调用父类中的初始化属性。但是这种方式当父类发生变化时需要进行修改。
+        # 调用父类中的初始化属性。但是这种方式当父类发生变化时需要进行修改。
+        # 比如，class Dog(Animal)修改为 class Dog(Canis)，那么下边的语句就需要进行相应的修改。
+        # Animal.__init__(self, name, age)           
         # 使用super直接指代父类，无论父类修改成什么都会去继承当前父类的属性。注意super后边跟括号。
         super().__init__(name, age)
    
