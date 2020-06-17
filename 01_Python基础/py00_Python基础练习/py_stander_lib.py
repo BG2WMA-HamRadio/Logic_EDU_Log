@@ -19,28 +19,28 @@ from time import sleep
 """
 # 调用OrderedDict()生成一个具有‘名字-呼号’键值对的有序字典
 # 并将其按照键入顺序打印。
-name_calsign = OrderedDict()
+name_callsign = OrderedDict()
 
-name_calsign['jp'] = 'bd2vaa'
-name_calsign['wtg'] = 'bg2wma'
-name_calsign['cz'] = 'bg2xma'
-name_calsign['lsz'] = 'bh2rcv'
-name_calsign['wy'] = 'bh2sjs'
-name_calsign['w_y'] = 'bh2wy'
-name_calsign['xf'] = 'bg2ues'
+name_callsign['jp'] = 'bd2vaa'
+name_callsign['wtg'] = 'bg2wma'
+name_callsign['cz'] = 'bg2xma'
+name_callsign['lsz'] = 'bh2rcv'
+name_callsign['wy'] = 'bh2sjs'
+name_callsign['w_y'] = 'bh2wy'
+name_callsign['xf'] = 'bg2ues'
 
 print('正在整理...')
 sleep(1)
-for name, callsign in name_calsign.items():
+for name, callsign in name_callsign.items():
     print(name.title(), '\t的呼号是： \t', callsign.upper())
 # 调用OrderedDict()生成一个具有‘型号-厂商’键值对的有序字典
 # 并将其按照键入顺序打印。
-modle_brand = OrderedDict()
+model_brand = OrderedDict()
 
-modle_brand['ft-991a'] = 'yaesu'
-modle_brand['id-5100'] = 'icom'
-modle_brand['郁金香'] = 'DIY'
-modle_brand['坚果_II'] = '锤子'
+model_brand['ft-991a'] = 'yaesu'
+model_brand['id-5100'] = 'icom'
+model_brand['郁金香'] = 'DIY'
+model_brand['坚果_II'] = '锤子'
 
 print('\n正在整理...')
 sleep(1)
