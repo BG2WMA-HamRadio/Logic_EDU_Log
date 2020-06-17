@@ -6,8 +6,8 @@
 ### PyCharm无法引入本目录或者下级目录的解决方法
 - 在PyCharm中正常创建的文件，无法通过import作为模块导入到同级或者上级目录的Python文件中。
 - 首先，新建项目文件夹时，确保使用`Python Package`模式。
-- 通常，我们在一个项目文件夹中，创建一个include目录，来存放被导入的模块（.py文件）。
-- 在PyCharm的右侧导航栏中，导航到当前目录中的include目录，右键单击。
+- 在项目文件夹**根目录**中，创建一个include目录，来存放被导入的模块（.py文件）。
+- 在PyCharm的右侧导航栏中，导航到include目录，右键单击。
 - 在弹出菜单中，导航到`Mark Dircetory as` --> `Sources Root`。
 - 即时就可以导入include目录中的模块了。
 
