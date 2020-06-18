@@ -9,6 +9,7 @@
 @file       :py_stander_lib.py
 @software   :PyCharm
 """
+# 练习使用几个Python自带的模块
 from collections import OrderedDict
 from random import randint
 from time import sleep
