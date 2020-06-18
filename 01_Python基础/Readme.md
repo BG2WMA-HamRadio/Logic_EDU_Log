@@ -6,8 +6,10 @@
 ### PyCharm无法import的解决方法
 - 在PyCharm中正常创建的文件，无法通过import作为模块导入。
 - 首先，新建项目文件夹时，确保使用`Python Package`模式。
-- 在项目文件夹**根目录**中，创建一个include目录，来存放被导入的模块（.py文件）。
-- 在PyCharm的右侧导航栏中，导航到include目录，右键单击。
+- 在PyCharm右侧导航栏中右键点击。
+  - 也可在项目文件夹**根目录**中，创建一个include目录，来存放被导入的模块（.py文件）。
+  - 这种方法通常需要对模块或者引用模块的文件定义目录路径。虽然麻烦，但是这种方式更为灵活。
+  - 在PyCharm的右侧导航栏中，导航到include目录，右键单击。
 - 在弹出菜单中，导航到`Mark Dircetory as` --> `Sources Root`。
 - 即时就可以导入include目录中的模块了。
 
