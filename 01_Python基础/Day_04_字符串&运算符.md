@@ -30,7 +30,7 @@
     print(s2.title(), '\'s', s3, 'is', s1.upper())
     print(f'{s2.title()}\'s {s3} is {s1.upper()}')
     ```
-    - str.format() 函数从2.6开始出现的方法
+    - str.format()**方法**是从2.6开始出现的
     ```
     s = 'I like {}, {}'
     print(s.format('Radio', 'CQ'))
@@ -39,7 +39,7 @@
     print(s.format('Radio', 'CQ'))
 
     s = 'I like {0}, {1}'                # {}内是元组的索引值
-    print(s.format('Radio', 'CQ'))       # 向s.format()函数传递一个元组作为参数。
+    print(s.format('Radio', 'CQ'))       # 向s.format()方法传递一个元组作为参数。
     ```
     - 如果占位符有变量的时候，使用f'{}'，没有变量的时候使用str.format()
     
