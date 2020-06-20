@@ -1,14 +1,49 @@
 ### 格式化字符串  
   - 1. 拼接字符串（拼串）: `str1 + str2 + ... +strn`
-  - 2. 参数传递（传叁）：`str1, str2, ..., strn`
+  - 2. 参数传递（传叁）：
+  ```
+  s1 = 'bg2wma'
+  s2 = 'tiangang'
+  s3 = 'CallSign'
+  print(s2.title(), '\'s', s3, 'is', s1.upper())
+  ```
   - 3. 占位符
     - %d 整数占位
     - %s 字符占位
     - %f 浮点数占位
+    ```
+    a = 'there are %d ducks'
+    print(a % 10)
+    b = 'there are 10 %s'
+    print(b % 'ducks')
+    c = '%f percent'
+    print(c % 75.46)
+    n = 'there are %d %s and it is %f'
+    print(n % (10, 'ducks', 75.46))   （多个占位符，以元组的形式提供参数）
+    ```
   - 4. 格式化的方式
     - `f'{str1},{str2}'
-    - str.format() 从2.6开始出现的方法
-    - 如果占位符有变量的时候，使用f'{}'，没有变量的时候使用str.format()+
+    ```
+    s1 = 'bg2wma'
+    s2 = 'tiangang'
+    s3 = 'CallSign'
+    print(s2.title(), '\'s', s3, 'is', s1.upper())
+    print(f'{s2.title()}\'s {s3} is {s1.upper()}')
+    ```
+    - str.format() 函数从2.6开始出现的方法
+    ```
+    s = 'I like {}, {}'
+    print(s.format('Radio', 'CQ'))
+
+    s = 'I like {1}, {0}'
+    print(s.format('Radio', 'CQ'))
+
+    s = 'I like {0}, {1}'                # {}内是元组的索引值
+    print(s.format('Radio', 'CQ'))       # 向s.format()函数传递一个元组作为参数。
+    ```
+    - 如果占位符有变量的时候，使用f'{}'，没有变量的时候使用str.format()
+    
+    
 ### 字符串的其他操作  
   - 字符串的长度 `len(str)`,统计字符串里的字符长度。
   - `max()` `min()`，统计字符串里字符的字符的ASCII码值的最大（最小）值
