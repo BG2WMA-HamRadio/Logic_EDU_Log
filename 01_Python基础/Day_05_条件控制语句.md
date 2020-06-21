@@ -107,8 +107,9 @@
       if dog_age <= 2 :
           print('狗的年龄' + 'dog_age' + '岁，相当于人的年龄' + str(person_age) + '岁。')
       else :
+          person_age = 10.5 * 2
           person_age += (dog_age - 2) * 4
-          print('狗的年龄' + 'dog_age' + '岁，相当于人的年龄' + str(person_age) + '岁。')
+          print('狗的年龄' + str(dog_age) + '岁，相当于人的年龄' + str(person_age) + '岁。')
   else :
       print('请输入合法数字')
       
