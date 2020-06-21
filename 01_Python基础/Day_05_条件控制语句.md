@@ -185,7 +185,8 @@
   i = 0
     
   #用while循环指定行数
-  while < 9 :
+  while i < 9 :
+      # 先更新变量，使i = 1
       i += 1
       #初始化列数
       j = 0
@@ -193,7 +194,7 @@
       while j < i  :
           j += 1
           print(f'{i} * {j} = {i*j} ', end='')                # f'{}' 用来格式化变量的输出
-     print()
+      print()
    ```
   
 ### `continue` 和 `break`  
