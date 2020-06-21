@@ -100,8 +100,18 @@
 
 ### 逻辑运算符  
   - `not` 逻辑非，对 符号右侧的值进行非运算，也就是取反操作（`True` 变 `False`， `Fals`e 变 `True`）
-    - 将非布尔值转化为布尔值后，进行取反操作。
-    - 0、空串、None等表示空性的值，会转换为False，其余全都是True
+    - 对于一个非布尔值，在运算的时候，Python会将非布尔值转化为布尔值后，进行操作。
+    ```
+    a = 1               # 转化为布尔值为True
+    a = not a           # 取反得到False
+    print('a = ', a)    # False
+    
+    b = None            # 转化为False(0, 空字符串，空列表，空字典，空集合，None等表示空性的值，转化为False)
+    b = not b           # 取反得到 True
+    print('b = ', b)    # True
+    ```
+    - 0、空串、None等表示空性的值，会转换为False，其余全都是True。
+    - 注意：**空格**是True。
   - `and`逻辑与，对符号两侧的值进行与运算。(与运算符两边的值只要有False，结果就是False)
     - T and T 结果为 T
     - T and F 结果为 F
