@@ -100,18 +100,22 @@
   - 狗的年龄，前两年狗的年龄每年等于人的年龄10.5岁，以后每年等于人的年龄4岁。编写一个程序计算用户输入的狗的年龄相当于人的年龄几岁。
   - 判断用户输入合法性，如果用户输入非法，提示。合法则计算并显示答案。
   ```
-  #要求用户输入狗的年龄
-  dog_age = float(input('请输入狗的年龄： '))
-  if dog_age > 0 :
-      person_age = dog_age * 10.5
-      if dog_age <= 2 :
-          print('狗的年龄' + 'dog_age' + '岁，相当于人的年龄' + str(person_age) + '岁。')
-      else :
-          person_age = 10.5 * 2
-          person_age += (dog_age - 2) * 4
-          print('狗的年龄' + str(dog_age) + '岁，相当于人的年龄' + str(person_age) + '岁。')
-  else :
-      print('请输入合法数字')
+  # 要求用户输入狗的年龄，并赋值给变量
+  d_age = float(input('请输入狗的年龄： '))
+  # 判断年龄的合法性
+  if d_age > 0:
+      # 狗的年龄小于2岁的处理
+      if d_age <= 2:
+          p_age = d_age * 10.5
+          print(f'{d_age}岁的狗，相当于人的年龄{p_age}岁。')
+      # 狗的年龄大于2岁的处理
+      else:
+          p_age = 2 * 10.5
+          p_age += (d_age - 2) * 4
+          print(f'{d_age}岁的狗，相当于人的年龄{p_age}岁。')
+  # 不合法年龄的处理
+  else:
+      print(f'你输入的狗的年龄{d_age}岁是错误的。')
       
   ```
 ### 5.6 while 语句
