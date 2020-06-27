@@ -162,7 +162,7 @@ print('异常出现后...')
 打开demo2.txt文件需要使用如下命令：
 ```
 try:
-    with open(filename, encoding='utf-8') as f_name:
+    with open('demo2.txt', encoding='utf-8') as f_name:
         content = f_name.read()
         print(content)
 except FileNotFoundError:
@@ -186,18 +186,29 @@ except FileXXX:
 - 该参数用来指定读取的字符的数量。**每个中文字符是一个字符。**
 - 可以为`size`指定一个数值，`read()`会读取指定数量的字符。
 - 每一次读取的时候，都是从上一次读取结束的位置开始读取。
-- 如果剩余字符的数量小于`size`，则将剩余内容读取完毕。
+- 如果剩余字符的数量小于`size`，则**一次性**将剩余内容读取完毕。
 ```
 try:
     with open(filename, encoding='utf-8') as f_name:
-        content = f_name.read(10)           # 每次读取10个字符
-        print(content)
+        # 定义一个变量保存读取结果
+        file_content = ''
+        # 定义一个变量指定读取的大小
+        chunk = 100
+        while True:
+            content = f_name.read(chunk)           # 每次读取100个字符
+            # 定义跳出死循环的条件
+            if not content:
+                break
+            # print(content)
+            file_content += content
+
 except FileNotFoundError:
-    print(f'{f_name}'文件不存在)
+    print(f'{f_name}文件不存在')
+else:
+    print(file_content)
 ```
-
-
-
+- `readline()`函数，每次读取一行文件。
+- `readlines()`函数，每次读取一行文件，并将读取到的文件封装到一个列表中，类似于`file_content.append(file.readline())`
 
 #### 文件的写入
 - write()，向文件写入内容
