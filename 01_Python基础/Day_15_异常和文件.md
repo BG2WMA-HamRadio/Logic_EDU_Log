@@ -11,9 +11,45 @@
   代码块（没有出现错误的处理方式）
 
 #### 异常的传播（抛异常）
-- 当在函数中出现了异常，如果对异常进行了处理，则已成不再继续传播
-- 如果函数中没有处理异常，则异常会继续向函数调用处继续传播。
-- 知道传递到全局作用域，如果依然没有处理，则程序终止，并且显示异常信息。
+- 当在**函数**中出现了异常，如果对异常进行了处理，则异常不再继续传播。
+- 如果**函数**中没有处理异常，则异常会继续向函数调用处继续传播。
+- 直到异常传递到**全局作用域**，如果依然没有处理，则程序终止，并且显示异常信息。
+```
+def fn():
+
+    print('我是fn')
+    print(100 / 0)         #在这里故意制造了一个除0异常
+
+
+def fn2():
+    print('我是fn2')
+    fn()
+
+def fn3():
+    print('我是fn3')
+    fn2()
+
+fn3()
+```
+运行时出现如下结果：
+```
+我是fn3         # 代码正常运行
+我是fn2         # 代码正常运行
+我是fn          # 代码正常运行
+Traceback (most recent call last):               # 出现异常并开始抛出异常
+  File "D:/GitHub/exercies/turtle.py", line 28, in <module> # 出现异常的位置
+    fn3()                                                   # 异常来源于执行fn3()
+  File "D:/GitHub/exercies/turtle.py", line 26, in fn3      # 出现异常的位置fn3()
+    fn2()                                                   # 异常对象来源于fn2()，并将抛给fn3()
+  File "D:/GitHub/exercies/turtle.py", line 22, in fn2      # 出现异常的位置fn2()
+    fn()                                                    # 异常对象来源于fn()，并抛给fn2()
+  File "D:/GitHub/exercies/turtle.py", line 17, in fn       # 异常对象初始来源。
+    print(100 / 0)                                          # 产生异常对象的语句
+ZeroDivisionError: division by zero                         # 异常对象（通常是产生异常的原因）
+
+Process finished with exit code 1
+```
+
 - 当程序的运行过程中出现异常，所有异常信息会被保存（封装）到一个专门的**异常对象**中
 - 异常传播，实际上就是异常对象抛给调用处。
 - 通常，异常对象是一个类（class）
@@ -28,20 +64,18 @@
 - 异常的整体代码块：
   ```
   try:
-      代码块
-  except:
-      代码块
-  except:
-      代码块
-  except:
-      代码块
-  except:
-      代码块
+      代码块  # 可能出现的错误
+  except ExceptionA:
+      代码块  # 出现A错误给出的提示
+  except ExceptionB:
+      代码块  # 出现B错误给出的提示。
+  except ExceptionC:
+      代码块  # 出现C错误给出的提示。
       .
       .
       .
   else:
-      代码块
+      代码块  # try语句没有出现错误时运行的语句
       
    finally:
        代码块
