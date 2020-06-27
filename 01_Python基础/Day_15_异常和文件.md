@@ -126,8 +126,7 @@ print('异常出现后...')
   1. 打开文件： `open('filename.ext')`，参数为文件名或者文件所在路径。返回当前**文件对象**
   2. 对文件进行读写操作（保存）
     - `read()`**函数**将读取到的文件保存到一个**字符串**中
-
-3. 关闭文件`close()`。
+  3. 关闭文件`close()`。
 - `with...as` 上下文处理器，可以用在很多函数，并非绑定在open()函数上。
 - `with open('filename.ext') as file_object` 
   - 在`with`语句中直接使用file_object来操作文件
