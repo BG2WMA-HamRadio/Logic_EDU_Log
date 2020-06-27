@@ -36,7 +36,7 @@ fn3()
 我是fn3         # 代码正常运行
 我是fn2         # 代码正常运行
 我是fn          # 代码正常运行
-Traceback (most recent call last):               # 出现异常并开始抛出异常
+Traceback (most recent call last):                          # 程序出现了异常：Traceback
   File "D:/GitHub/exercies/turtle.py", line 28, in <module> # 出现异常的位置
     fn3()                                                   # 异常来源于执行fn3()
   File "D:/GitHub/exercies/turtle.py", line 26, in fn3      # 出现异常的位置fn3()
