@@ -140,10 +140,34 @@ print('异常出现后...')
 
 #### 读取文件
 - 通过`read()`函数进行读取，将读取到的内容保存到一个**字符串**当中
-- 通过`open()`读取的文件有两种：
+- 通过`open()`函数打开的文件有两种：
   - 纯文本文件
-  - 二进制文件
-- 打开非ASICC编码文件的时候，需要在`open()`函数中传递`encode=`编码。
+  - 二进制文件（图片，音频，视频...）
+- 打开**非ASCII编码**文件的时候，需要在`open()`函数中传递`encode=`编码。
+```
+# demo2.txt
+凉州词（二首）
+王之涣
+黄河远上白云间，
+一片孤城万仞山。
+羌笛何须怨杨柳，
+春风不度玉门关。
+
+
+单于北望拂云堆，
+杀马登坛祭几回。
+汉家天子今神武，
+不肯和亲归去来
+```
+打开demo2.txt文件需要使用如下命令：
+```
+try:
+    with open(filename, encoding='utf-8') as f_name:
+        content = f_name.read()
+        print(content)
+except FileNotFoundError:
+    print(f'{f_name}'文件不存在)
+```
 
 - 操作文件的基本代码：
 
@@ -159,10 +183,20 @@ except FileXXX:
 #### 较大文件的读取
 - 读取较大文件的时候，不要直接使用`.read()`文件，容易出现内存溢出等错误。
 - `read()`可以接收一个`size`作为参数，默认值为`-1`，会读取所有字符。
-- 该参数用来指定读取的字符的数量。
+- 该参数用来指定读取的字符的数量。**每个中文字符是一个字符。**
 - 可以为`size`指定一个数值，`read()`会读取指定数量的字符。
 - 每一次读取的时候，都是从上一次读取结束的位置开始读取。
 - 如果剩余字符的数量小于`size`，则将剩余内容读取完毕。
+```
+try:
+    with open(filename, encoding='utf-8') as f_name:
+        content = f_name.read(10)           # 每次读取10个字符
+        print(content)
+except FileNotFoundError:
+    print(f'{f_name}'文件不存在)
+```
+
+
 
 
 #### 文件的写入
