@@ -55,7 +55,7 @@
   print(id(MyClass), type(MyClass))    # 前边显示的是MyClass的内存地址，后边显示<class 'type'>
   mc = MyClass()                       # 使用MyClass创建实例mc
   ```
-  - 其中，`MyClass`是变量， `id`为`Myclass`在内存中的地址，`type`为 `class 'type'`
+  - 显示结果中，`MyClass`是对象， `id`为`Myclass`在内存中的地址，`type`为 `class 'type'`
   - 可以向对象中添加变量，对象添加变量我们也称之为属性
   - 语法：`对象.属性名 = 属性值`
     - `mc.high = '100cm'`给**实例对象**`mc`添加属性值：`high = 100cm`
