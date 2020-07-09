@@ -36,11 +36,12 @@
   - 通常，人们认为OSI模型最上边的三层（应用程，表达层和会话层）在TCP/IP组中是一个**应用层**。由于TCP/IP有一个相对较弱的会话层，由TCP和RTP（实时传输协议Real-Time Transport Protocol）下打开和关闭连接组成，并且在TCP和UDP下的各种应用提供不同的端口号，这些功能能够被单个的应用程序（或者那些应用程序所使用的库）增加。
   - 与此相似的是，IP是按照将它下面的网络当作一个**“黑盒子”**的思想设计的，这样在讨论TCP/IP的时候，就可以把它当作一个独立的层。  
  
- |:---:|:---:|:---:|
- |名称|English Name|主要协议|
- |应用层|Application Layer|HTTP FTP DNS（如BGP和RIP这样的路由协议，尽管由于各种各样的原因它们分别运行在TCP和UDP上，仍然可以将他们看作网络层的一部分）|
- |传输层|Transport Layer|TCP UDP RTP SCTP（如OSPF这样的路由协议，尽管运行在IP上也可以看作是网络层的一部分）|
- |网络互连层|Internet Layer|对于TCP/IP来说，这是互联网协议（IP）（如ICMP和IGMP这样的协议尽管必须运行在IP上，也仍然可以看作是网络互连层的一部分；ARP不运行在IP上）|
- |网络访问（链接）层|Network Access (Link) Layer|例如以太网（Enternet）,Wi-Fi，MPLS等|
+|:---:|:---:|:---:|  
+|名称|English Name|主要协议|  
+|应用层|Application Layer|HTTP FTP DNS（如BGP和RIP这样的路由协议，尽管由于各种各样的原因它们分别运行在TCP和UDP上，仍然可以将他们看作网络层的一部分）|  
+|传输层|Transport Layer|TCP UDP RTP SCTP（如OSPF这样的路由协议，尽管运行在IP上也可以看作是网络层的一部分）|  
+|网络互连层|Internet Layer|对于TCP/IP来说，这是互联网协议（IP）（如ICMP和IGMP这样的协议尽管必须运行在IP上，也仍然可以看作是网络互连层的一部分；ARP不运行在IP上）|  
+|网络访问（链接）层|Network Access (Link) Layer|例如以太网（Enternet）,Wi-Fi，MPLS等|  
+  
  
 
