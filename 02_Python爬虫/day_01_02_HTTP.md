@@ -69,4 +69,63 @@ HTTP/1.1协议中一共定义了八种方法（也叫“动作”）来以不同
   4xx|请求错误|请求含有此法错误或者无法被执行
   5xx|服务器错误|服务器在处理某个正确请求时发生错误
   
-  
+## 持续连线
+在HTTP/0.9和1.0中，TCP连线在每一次请求/回应之后关闭。在HTTP/1.1中，引入了保持连线的机制，一个连接可以重复在多个请求/回应中使用。  
+持续连线的方式可以大大减小等待时间，因为在发出第一个请求后，双方不需要重新运行TCP握手程序。
+
+## 一个典型的例子
+下面是我们在访问www.google.com 的时候HTTP的请求以及服务器的相应：
+### 常规
+```
+请求 URL: https://www.google.com/complete/search?q&cp=0&client=mobile-gws-wiz-hp&xssi=t&hl=zh-CN&authuser=0&psi=wToIX7P6D86bmAWn6a6IBQ.1594374848934&newwindow=1&ei=wToIX7P6D86bmAWn6a6IBQ&dpr=2
+请求方法: GET
+状态代码: 200 
+远程地址: 172.217.161.36:443
+引用站点策略: origin
+```
+### 响应标头
+```
+alt-svc: h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+cache-control: private, max-age=3600
+content-disposition: attachment; filename="f.txt"
+content-encoding: br
+content-type: application/json; charset=UTF-8
+date: Fri, 10 Jul 2020 09:54:10 GMT
+expires: Fri, 10 Jul 2020 09:54:10 GMT
+server: gws
+set-cookie: SIDCC=......; expires=Sat, 10-Jul-2021 09:54:10 GMT; path=/; domain=.google.com; priority=high
+status: 200
+strict-transport-security: max-age=31536000
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+```
+
+### 请求表头
+```
+:authority: www.google.com
+:method: GET
+:path: /complete/search?q&cp=0&client=mobile-gws-wiz-hp&xssi=t&hl=zh-CN&authuser=0&psi=wToIX7P6D86bmAWn6a6IBQ.1594374848934&newwindow=1&ei=wToIX7P6D86bmAWn6a6IBQ&dpr=2
+:scheme: https
+accept: */*
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fi;q=0.5
+cookie: ......
+referer: https://www.google.com/
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: same-origin
+user-agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Mobile Safari/537.36
+```
+### 查询字符串参数
+```q: 
+cp: 0
+client: mobile-gws-wiz-hp
+xssi: t
+hl: zh-CN
+authuser: 0
+psi: _TsIX7ieM7XpmAXKh5OYAg.1594375209022
+newwindow: 1
+ei: _TsIX7ieM7XpmAXKh5OYAg
+dpr: 2
+
+```
