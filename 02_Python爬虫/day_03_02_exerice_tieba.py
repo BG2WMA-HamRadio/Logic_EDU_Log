@@ -5,7 +5,6 @@
 @Author     :BG2WMA
 @License    : (C) Copyright 2000-2020, BG2WMA
 @time       :2020-07-15 00:59:20
-@project    :CSDN_Python_Lesson_scrapy
 @file       :day_03_02_exerice_tieba.py
 @software   :PyCharm
 """
@@ -40,15 +39,10 @@ import urllib.parse
 import random
 import os
 
-from ua1 import ua_lst
-
 # 定义基础url
 base_url = 'https://tieba.baidu.com/f?'
 # 重构请求头：
-# ag = ua_lst
-# ag_sn = random.randint(1, len(ag))
-# agent = ag[ag_sn]
-# headers = {'User-Agent': agent}
+# 从UA文件夹中随机选取UA文件，并从文件中随机选取一条User-Agent
 headers = {}
 path = './UA/'
 f_l = ['Chrome.txt', 'Edge.txt', 'Firefox.txt', 'Mozilla.txt', 'Opera.txt', 'Safari.txt']
@@ -59,7 +53,6 @@ with open(full_file, 'r') as fi:
     ua = random.choice(uas).strip()
     headers['User-Agent'] = ua
 
-print(headers)
 # 定义变量
 k_w = input('输入需要爬取的关键字：')
 kw = {'kw': k_w}
