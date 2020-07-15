@@ -5,13 +5,15 @@
 @Author     :BG2WMA
 @License    : (C) Copyright 2000-2020, BG2WMA
 @time       :2020-07-16 00:11:58
-@project    :CSDN_Python_Lesson_scrapy
 @file       :day_03_06_requests.py
 @software   :PyCharm
 """
 # 导入requests模块
 import requests
 import random
+"""
+介绍requests模块的几个主要方法以及重要参数
+"""
 
 headers = {}
 path = './UA/'
