@@ -5,7 +5,6 @@
 @Author     :BG2WMA
 @License    : (C) Copyright 2000-2020, BG2WMA
 @time       :2020-07-15 02:16:18
-@project    :CSDN_Python_Lesson_scrapy
 @file       :day_03_03_exerice_tieba_with_func.py
 @software   :PyCharm
 """
@@ -42,7 +41,6 @@ def get_UA():
     # 在主文件中随机选取一个ua返回给程序调用。
     with open(full_path, 'r') as f_u:
         agents = f_u.readlines()
-        # ag_num = random.randint(0, len(agents) - 1)
         res = random.choice(agents).strip()
         return res
 
