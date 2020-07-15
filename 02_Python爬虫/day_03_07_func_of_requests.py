@@ -5,7 +5,6 @@
 @Author     :BG2WMA
 @License    : (C) Copyright 2000-2020, BG2WMA
 @time       :2020-07-16 00:36:33
-@project    :CSDN_Python_Lesson_scrapy
 @file       :day_03_07_func_of_requests.py
 @software   :PyCharm
 """
@@ -16,6 +15,7 @@ import random
 """
 requests模块中的post请求
 可以自动对请求头和参数进行编码
+通过有道翻译的例子对比urllib的使用。
 """
 
 # 构建请求头中的UA
