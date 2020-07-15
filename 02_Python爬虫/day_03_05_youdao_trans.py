@@ -5,7 +5,6 @@
 @Author     :BG2WMA
 @License    : (C) Copyright 2000-2020, BG2WMA
 @time       :2020-07-15 15:12:11
-@project    :CSDN_Python_Lesson_scrapy
 @file       :day_03_05_youdao_trans.py
 @software   :PyCharm
 """
@@ -20,6 +19,7 @@ key_word = input('请输入要翻译的内容： ')
 # url地址要将‘_o’删除
 url = 'http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule'
 headers = {}
+# 重构请求头
 path = './UA/'
 f_l = ['Chrome.txt', 'Edge.txt', 'Firefox.txt', 'Mozilla.txt', 'Opera.txt', 'Safari.txt']
 u_f = random.choice(f_l)
@@ -28,7 +28,7 @@ with open(full_file, 'r') as fi:
     uas = fi.readlines()
     ua = random.choice(uas).strip()
 headers['User-Agent'] = ua
-
+# 构建data参数
 data ={
     'i': key_word,
     'from': 'AUTO',
