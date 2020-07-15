@@ -5,7 +5,6 @@
 @Author     :BG2WMA
 @License    : (C) Copyright 2000-2020, BG2WMA
 @time       :2020-07-15 09:41:31
-@project    :CSDN_Python_Lesson_scrapy
 @file       :day_03_04_exerice_tieba_with_class.py
 @software   :PyCharm
 """
