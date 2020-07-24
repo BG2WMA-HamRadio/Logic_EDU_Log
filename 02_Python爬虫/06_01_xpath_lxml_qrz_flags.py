@@ -26,7 +26,7 @@ def get_html():
         fo.write(html)
 
 
-# get_html()
+# get_html() 如无特殊需求，运行一次即可。
 # 定义函数读取html文件并构建element对象
 def build_element():
     with open('qrz.html', 'r') as fi:
@@ -36,8 +36,6 @@ def build_element():
     return html_element
 
 
-# h_element = build_element()
-# print(h_element)
 # 定义一个字典，存储爬取的数据,并将结果保存到列表中
 def save_to_dic(h_element):
     # 创建一个存放字典的列表
