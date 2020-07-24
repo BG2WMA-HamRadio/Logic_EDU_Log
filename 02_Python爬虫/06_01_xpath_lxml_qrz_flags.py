@@ -86,5 +86,4 @@ def write_csv(dxcc_list):
 if __name__ == '__main__':
     h_element = build_element()
     dxcc_list = save_to_dic(h_element)
-    print(dxcc_list)
     write_csv(dxcc_list)
