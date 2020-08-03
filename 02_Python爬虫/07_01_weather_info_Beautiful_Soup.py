@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # 使用Beautifiul Soup获取中国天气网的天气数据
-# 本代码并不包含实际功能，所获取的信息极为有限，只作为展示BeautifulSoup模块的练习。
+# 本代码并不包含实际功能，所获取的信息极为有限，只作为展示BeautifulSoup模块的功能。
 
 
 # 获取大区url，获取每个大区的网页源码，并存储到临时文件夹
@@ -37,7 +37,7 @@ def weather(file_name):
     soup = BeautifulSoup(html, 'html5lib')
     # conMidtab 包含整个地区的所有信息
     conMidtab_tag = soup.find('div', class_="conMidtab")
-    # 每一个table包含单个城市的信息
+    # 每一个table包含一个城市的信息
     tables = conMidtab_tag.findAll('table')
 
     # 对tables 遍历，从中提取城市以及天气信息。
